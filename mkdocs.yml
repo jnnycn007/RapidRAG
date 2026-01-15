@@ -1,0 +1,169 @@
+site_name: RapidRAG
+site_url: https://rapidai.github.io/RapidRAG/
+site_author: RapidAI
+site_description:
+  QA based on local knowledge and LLM.
+
+repo_name: RapidAI/RapidRAG
+repo_url: https://github.com/RapidAI/RapidRAG
+
+copyright: Copyright &copy; 2025 Maintained by RapidAI.
+
+edit_uri: https://github.com/RapidAI/RapidRAG/tree/main/docs
+
+theme:
+  name: material
+  # logo: /static/images/favicon-lightning.svg
+  favicon: ./static/images/favicon-lightning.svg
+  language: zh
+  custom_dir: docs/overrides
+  features:
+    - announce.dismiss
+    - content.tooltips
+    - content.code.copy
+    - content.tabs.link
+    - content.action.edit  # 显示编辑按钮
+    - content.action.view  # 显示查看源码按钮
+    - content.footnote.tooltips
+    - navigation.expand  # 默认打开所有的子节
+    - navigation.tabs # 顶级索引被作为tab
+    - navigation.tabs.sticky # tab始终可见
+    - navigation.top # 开启顶部导航栏
+    - navigation.tracking # 导航栏跟踪
+    - navigation.footer
+    - navigation.indexes
+    - search.highlight # 搜索高亮
+    - search.share # 搜索分享
+    - search.suggest # 搜索建议
+    - toc.follow # 目录跟踪-页面右侧的小目录
+
+  palette:
+    - media: "(prefers-color-scheme)" # 系统主题
+      toggle:
+        icon: material/theme-light-dark
+        name: 系统主题
+    - media: "(prefers-color-scheme: light)" # 亮色主题
+      scheme: default
+      primary: white
+      accent: light blue
+      toggle:
+        icon: material/weather-sunny
+        name: 明亮主题
+    - media: "(prefers-color-scheme: dark)" # 暗色主题
+      scheme: slate
+      primary: black
+      accent: yellow
+      toggle:
+        icon: material/weather-night
+        name: 暗黑主题
+
+  icon:
+    logo: fontawesome/solid/bolt
+    previous: fontawesome/solid/angle-left
+    next: fontawesome/solid/angle-right
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+    tag:
+      default-tag: fontawesome/solid/tag
+      hardware-tag: fontawesome/solid/microchip
+      software-tag: fontawesome/solid/laptop-code
+
+plugins:
+  - blog:
+      archive: false
+      post_date_format: short
+      blog_toc: true
+      categories_toc: true
+      pagination: false
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - git-committers:
+      repository: RapidAI/RapidOCRDocs
+      branch: main
+      token: !!python/object/apply:os.getenv ["MKDOCS_GIT_COMMITTERS_APIKEY"]
+  - git-revision-date-localized:
+      enable_creation_date: true
+      timezone: Asia/Shanghai
+      type: iso_datetime
+      exclude:
+        - "index.md"
+        - "business_support.md"
+        - "communicate.md"
+        - "quickstart.md"
+        - "online_demo.md"
+        - "related_projects.md"
+        - "model_list.md"
+        - "sponsor.md"
+        - "install_usage/**"
+
+hooks:
+  - hooks/expiry.py
+  - hooks/change_copyright.py
+  - hooks/link.py
+
+extra_css:
+  - stylesheets/extra.css
+  - stylesheets/font.css
+
+link_pages:
+  - changelog/*.md
+  - faq/*.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/RapidAI
+    - icon: fontawesome/brands/weixin
+      link: https://raw.githubusercontent.com/RapidAI/.github/main/assets/RapidAI_poster_compose.png
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/rapidocr/
+  version:
+    provider: mike
+  expiry_days: 180
+
+markdown_extensions:
+  - abbr
+  - attr_list
+  - pymdownx.snippets
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.details
+  - footnotes
+  - def_list
+  - md_in_html
+  - tables
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+        anchor_linenums: true
+        line_spans: __span
+        pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+
+nav:
+  - 概览: index.md
+  - 快速开始: quickstart.md
+  - 在线demo: online_demo.md
+  - 更新日志: changelog.md
+  - 博客:
+    - blog/index.md
+  - 交流群: communicate.md

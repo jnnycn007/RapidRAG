@@ -9,7 +9,7 @@
   <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
   <a href="https://choosealicense.com/licenses/apache-2.0/"><img alt="GitHub" src="https://img.shields.io/github/license/RapidAI/RapidRAG"></a>
 
-  简体中文 | [English](../README.md)
+  简体中文 | [English](./README.md)
 </div>
 
 ### 简介

@@ -8,6 +8,8 @@ categories:
 comments: true
 ---
 
+<!-- more -->
+
 ### 引言
 
 {{% alert context="info" %}}该项目的LLM部分是独立的，用户可在 **knowledge_qa_llm/llm** 自定义配置所需的LLM接口。{{% /alert %}}

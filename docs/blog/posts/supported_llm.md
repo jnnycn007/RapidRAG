@@ -8,6 +8,9 @@ categories:
 comments: true
 ---
 
+
+<!-- more -->
+
 ✔ [ChatGLM2-6B](https://huggingface.co/THUDM/chatglm2-6b)
 
 ✔ [BaiChuan-7B](https://huggingface.co/baichuan-inc/Baichuan-7B)

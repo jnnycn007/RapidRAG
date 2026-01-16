@@ -12,7 +12,7 @@ comments: true
 
 ### 引言
 
-{{% alert context="info" %}}该项目的LLM部分是独立的，用户可在 **knowledge_qa_llm/llm** 自定义配置所需的LLM接口。{{% /alert %}}
+该项目的LLM部分是独立的，用户可在 **knowledge_qa_llm/llm** 自定义配置所需的LLM接口。
 
 下面以自定义支持InterLM-7b大模型为例，说明如何支持的。前提是本地满足部署LLM的推理条件。
 
@@ -26,9 +26,7 @@ comments: true
 
 这一点可以参考[ChatGLM](https://github.com/THUDM/ChatGLM-6B/blob/main/api.py)API的实现。只需要替换模型加载部分为InternLM的即可。具体如下：
 
-<details>
-
-```python {linenos=table}
+```python linenums="1"
 from fastapi import FastAPI, Request
 from transformers import AutoTokenizer, AutoModel
 import uvicorn, json, datetime
@@ -87,15 +85,11 @@ if __name__ == '__main__':
     uvicorn.run(app, host='0.0.0.0', port=8000, workers=1)
 ```
 
-</details>
-
 #### 3. 编写调用接口部分代码
 
 在以下项目`knowledge_qa_llm/llm/`目录下创建`internlm_7b.py`文件，具体代码如下：
 
-<details>
-
-```python {linenos=table}
+```python linenums="1"
 import json
 from typing import List, Optional
 
@@ -129,13 +123,11 @@ class InternLM_7B:
             return f"Network error:{e}"
 ```
 
-</details>
-
 #### 4. 添加导入声明
 
 在`knowledge_qa_llm/llm/__init__.py`中添加对应的`import`部分代码，示例如下：
 
-```python {linenos=table}
+```python linenums="1"
 from .baichuan_7b import BaiChuan7B
 from .chatglm2_6b import ChatGLM2_6B
 from .ernie_bot_turbo import ERNIEBotTurbo
@@ -149,7 +141,7 @@ __all__ = ["BaiChuan7B", "ChatGLM2_6B", "ERNIEBotTurbo", "Qwen7B_Chat", "InternL
 
 更改`knowledge_qa_llm/config.yaml`
 
-```yaml {linenos=table}
+```yaml linenums="1"
 LLM_API:
     InternLM_7B: your_api
     Qwen7B_Chat: your_api
@@ -159,6 +151,6 @@ LLM_API:
 
 #### 6. 启动
 
-```bash {linenos=table}
+```bash linenums="1"
 streamlit run web_ui.py
 ```

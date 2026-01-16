@@ -34,3 +34,4 @@ jobs:
           ls -la site/
           mike deploy --push --update-aliases main latest
           mike set-default main
+          mike set-default --push latest

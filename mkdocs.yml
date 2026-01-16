@@ -14,7 +14,7 @@ edit_uri: https://github.com/RapidAI/RapidRAG/tree/main/docs
 theme:
   name: material
   # logo: /static/images/favicon-lightning.svg
-  favicon: ./static/images/favicon-lightning.svg
+  favicon: ./static/images/material_file_search.svg
   language: zh
   custom_dir: docs/overrides
   features:
@@ -58,7 +58,7 @@ theme:
         name: 暗黑主题
 
   icon:
-    logo: fontawesome/solid/bolt
+    logo: material/file/search
     previous: fontawesome/solid/angle-left
     next: fontawesome/solid/angle-right
     repo: fontawesome/brands/github

@@ -5,26 +5,26 @@ hide:
   - toc
 ---
 
-#### 1. 克隆整个项目到本地
+## 1. 克隆整个项目到本地
 
-```bash {linenos=table}
+```bash linenums="1"
 git clone https://github.com/RapidAI/Knowledge-QA-LLM.git
 ```
 
-#### 2. 安装运行环境
+## 2. 安装运行环境
 
-```bash {linenos=table}
+```bash linenums="1"
 cd Knowledge-QA-LLM
 pip install -r requirements.txt
 ```
 
-#### 3. 下载提取向量模型到本地
+## 3. 下载提取向量模型到本地
 
 本项目目前以Moka-AI的m3e模型作为提取特征向量的主要模型，当然其他模型，也可自行配置。
 
 将[`moka-ai/m3e-small`](https://huggingface.co/moka-ai/m3e-small/tree/main)下载下来放到`assets/models/m3e-small`目录下，下载命令如下：
 
-```python {linenos=table}
+```python linenums="1"
 from sentence_transformers import SentenceTransformer
 
 # 指定cache_dir即可
@@ -39,7 +39,7 @@ for sentence, embedding in zip(sentences, embeddings):
     print("")
 ```
 
-#### 4. 配置LLM API接口
+## 4. 配置LLM API接口
 
 首先需要单独在本地部署大模型，以API方式启动。以ChatGLM-6B为例，具体可参考[ChatGLM2-6B API](https://github.com/THUDM/ChatGLM2-6B/blob/main/api.py)
 
@@ -47,23 +47,24 @@ for sentence, embedding in zip(sentences, embeddings):
 
 如果自己使用的LLM，没有该文件，可自行实现，保证输入和输出与现有的一致即可。
 
-#### 5. 更改`config.yaml`配置文件
+## 5. 更改`config.yaml`配置文件
 
 将调用ChatGLM-6B的`llm_api`的url写到[`knowledge_qa_llm/config.yaml`](./knowledge_qa_llm/config.yaml)配置文件中
 
-```yaml {linenos=table}
+```yaml  linenums="1"
 LLM_API:
   ChatGLM2_6B: your_api
 ```
 
-#### 6. 运行
+## 6. 运行
 
-{{< alert context="info" text="streamlit框架的启动，不可以用`python webui.py`方式启动，必须用以下方式启动。" />}}
+!!! note
 
-{{< tabs tabTotal="2">}}
-{{% tab tabName="UI Demo" %}}
+    streamlit框架的启动，不可以用`python webui.py`方式启动，必须用以下方式启动。
 
-```bash {linenos=table}
+### UI Demo
+
+```bash linenums="1"
 streamlit run webui.py
 ```
 
@@ -71,16 +72,12 @@ streamlit run webui.py
     <img src="https://github.com/RapidAI/Knowledge-QA-LLM/releases/download/v0.0.1/UIDemo.gif" width="100%" height="100%">
 </div>
 
-{{% /tab %}}
-{{% tab tabName="CLI Demo" %}}
+### CLI Demo
 
-```bash {linenos=table}
+```bash linenums="1"
 python cli.py
 ```
 
 <div align="center">
     <img src="https://github.com/RapidAI/Knowledge-QA-LLM/releases/download/v0.0.1/demo.gif" width="100%" height="100%">
 </div>
-
-{{% /tab %}}
-{{< /tabs >}}
